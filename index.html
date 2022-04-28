@@ -123,19 +123,19 @@
       <h2 style="text-align:center"> Register </h2>
       <p> Please fill in this form to create an account. </p>
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input type="text" placeholder="Enter Username" name="uname" id="username" required>
       
       <label for="email"><b>Email Address</b></label>
-      <input type="email" placeholder="Enter Email" name="email" required>
+      <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" placeholder="Enter Password" name="psw" id="password" required>
        <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Enter Repeat Password" name="psw-repeat" required>
+      <input type="password" placeholder="Enter Repeat Password" name="psw-repeat" id="rpassword" required>
        
       <p>By creating an account you agree to our <a href="comfirmation.html" style="color:dodgerblue">Terms & Privacy</a>.</p>
       	<div style="text-align:center">
-		<button class="btn btn-primary" type="submit">Register</button>
+		<button class="btn btn-primary" type="button" onclick="register();">Register</button>
         </div>
     	</div>
         </form>

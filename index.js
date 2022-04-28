@@ -38,4 +38,37 @@ function login(){
     },
   });
 }
+function register(){
+	console.log("Success go to JS");
+	var username = document.getElementById("username").value;
+	console.log(username);
+
+	var email = document.getElementById("email").value;
+	if(document.getElementById("password").value != document.getElementById("rpassword").value ){
+		console.log(document.getElementById("password").value);
+		console.log(document.getElementById("rpassword").value);
+		alert('Password does not match!');
+	}
+	else{
+		password = document.getElementById("rpassword").value;
+	}
+	password = document.getElementById("rpassword").value;
+	var attributeList= [
+  	new AmazonCognitoIdentity.CognitoUserAttribute({
+    	Name: 'email',
+    	Value: email
+   	})
+  	];
+	userPool.signUp(username, password, attributeList, null, function(err, result){
+       if (err) {
+        console.log(err);
+        returnData = { 'result ' : 'fail', 'data' : err.message}
+       }
+       else
+       {
+	console.log(result);
+        returnData = { 'result ' : 'success', 'data' : result.user}
+       }
+      });
+}
 
