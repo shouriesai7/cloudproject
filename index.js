@@ -40,11 +40,11 @@ function login(){
 }
 function register(){
 	console.log("Success go to JS");
-	var username = document.getElementById("username").value;
+	var username = document.getElementById("usernamer").value;
 	console.log(username);
 
 	var email = document.getElementById("email").value;
-	if(document.getElementById("password").value != document.getElementById("rpassword").value ){
+	if(document.getElementById("passwordr").value != document.getElementById("rpassword").value ){
 		console.log(document.getElementById("password").value);
 		console.log(document.getElementById("rpassword").value);
 		alert('Password does not match!');
@@ -52,7 +52,7 @@ function register(){
 	else{
 		password = document.getElementById("rpassword").value;
 	}
-	password = document.getElementById("rpassword").value;
+	
 	var attributeList= [
   	new AmazonCognitoIdentity.CognitoUserAttribute({
     	Name: 'email',
