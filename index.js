@@ -45,8 +45,6 @@ function register(){
 
 	var email = document.getElementById("email").value;
 	if(document.getElementById("passwordr").value != document.getElementById("rpassword").value ){
-		console.log(document.getElementById("password").value);
-		console.log(document.getElementById("rpassword").value);
 		alert('Password does not match!');
 	}
 	else{
