@@ -28,7 +28,7 @@ function login(){
     onSuccess: function (result) {
       var accessToken = result.getAccessToken().getJwtToken();
       console.log('Authentication successful', accessToken);
-      window.location = './index.html';
+      window.location = './mainpage.html';
     },
 
     onFailure: function(err) {
@@ -66,6 +66,7 @@ function register(){
        {
 	console.log(result);
         returnData = { 'result ' : 'success', 'data' : result.user}
+	window.location = "./comfirmation.html"
        }
       });
 }
