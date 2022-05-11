@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset= "utf-8">
+		<title> Food Crawl </title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="js/amazon-cognito-identity.min.js"></script>
+    		<script src="js/aws-sdk.min.js"></script>
+		<script src="index.js"></script>
+		<style>
+			.logo{
+				margin: 0;
+				width: 200px;
+				height: 200px;
+				position: relative;
+				top: 10px;
+			}
+			.icon {
+				font-size:48px;
+				color:purple;
+				text-shadow:2px 2px 4px #000000;
+				padding: 0 0em 0 4em;
+				cursor: pointer;
+			}
+			.iconbar{
+				margin: 0;
+				position: absolute;
+				top: 80px;
+				-ms-transform: translateX(-50%);
+				transform: translateX(-50%);
+				display:inline-block;
+					
+			}
+			.profilepic{
+				margin: 0;
+				position:fixed;
+				top 80px;
+				right: 80px;
+						}
+			.picon {
+				font-size:48px;
+				color:purple;
+				text-shadow:2px 2px 4px #000000;
+				vertical-align: middle;
+				cursor: pointer;
+			}
+			.dropdown-content {
+  			display: none;
+  			position: absolute;
+  			background-color: #f1f1f1;
+  			min-width: 160px;
+  			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  			z-index: 1;
+			}
+			.dropdown-content a {
+  			color: black;
+  			padding: 12px 16px;
+  			text-decoration: none;
+  			display: block;
+			}
+			.dropdown-content a:hover {background-color: #ddd;}
+			.iconbar:hover .dropdown-content {display: block;}
+			.iconbar:hover .picon {color: #dcd0ff;}
+			.restaurantbox{
+				position: relative;
+				top: 100px;
+				left: 5%;	
+			}
+			.btna{
+				position: relative;
+				top:160px;
+			}
+			.resimage{
+				width: 300px;
+				height: 150px;
+				position:absolute;
+				left: 3px;
+			}
+			.info{
+				position: relative;
+				display: inline;
+			}
+			.box{
+				width: 100px;
+				height: 30px;
+				border: 1px solid black;
+				margin: 2px;
+				padding: 5px;
+			}			
+			.restool{
+				position:absolute;
+				right: 120px;
+
+			}
+			figure {
+			    border: thin #c0c0c0 solid;
+			    display: flex;
+			    flex-flow: column;
+			    padding: 10px;
+			    max-width: 500px;
+			    margin: auto;
+			    display: inline-block;
+			}
+
+		
+			figcaption {
+    				background-color: #222;
+				color: #fff;
+    				font: italic smaller sans-serif;
+    				padding: 3px;
+    				text-align: center;
+			}
+			.commentbox{
+			 border: thin #c0c0c0 solid;
+			    display: flex;
+			    flex-flow: column;
+			    padding: 10px;
+			    max-width: 300px;
+			    margin: auto;
+			    display: inline-block;
+			
+			}
+		</style>
+	</head>
+	<body>
+			<div class="logo">
+			<img src="images/profile.jpeg">
+		</div>
+		<div class="iconbar" style="left:45%">
+			<a class="material-icons icon"  href="mainpage.html">home</a>
+			<a class="material-icons icon" href="mainpage.html">public</a>				
+			<a class="material-icons icon" href="mainpage.html">route</a>
+		</div>
+		<div  class="iconbar" style="right:50px">	
+			<span id="text">Welcome, test!</span> 
+			<i class="material-icons picon">person</i>
+			<div class="dropdown-content">
+    			<a href="#">Profile</a>
+   			<a href="#">Log out</a>
+      			</div>
+		</div>
+		<div class= "restaurantbox">
+				<img  class="resimage" src="images/profile.jpeg"style="width:300px;height:150px;">
+				<div class= "info" style="left: 320px">
+					<h1  id= "res_name" style="font-size:30px"> Restaurant Name </h1>
+					<h2  id= "Address" style="font-size:15px"> Address </h2>		
+					<span id="cuisine" class="box" style="background-color:azure">Cuisine </span> 
+					<span id="cuisine" class="box" style="background-color:lightpink">Cuisine2 </span>
+				</div>
+		</div>
+
+		<div class= "restool">
+			       	    <button name="submit" class="btn btn-primary btn-lg" type="button">Add</button>
+		</div>
+		<div class= "restaurantbox" style="top:200px">
+			<h1> Popular Dishes </h1>
+			<figure>
+				<img  src="images/profile.jpeg"style="width:250px;height:250px;">
+				<figcaption id="food1"> Food 1 </figcaption>
+			</figure>
+				<figure>
+				<img  src="images/profile.jpeg"style="width:250px;height:250px;">
+				<figcaption id="food2"> Food 2 </figcaption>
+			</figure>
+			<figure>
+				<img  src="images/profile.jpeg"style="width:250px;height:250px;">
+				<figcaption id="food3"> Food 3 </figcaption>
+			</figure>
+		</div>
+
+		<div class= "restaurantbox" style="top:200px">
+			<h1> Recent Reviews </h1>
+			<div class ="commentbox">
+				<h2 id="username1" style="text-align: center"> User 1 </h2>
+				<p id="comment1"> This place sucks. </p>
+			</div>
+				<div class ="commentbox">
+				<h2 id="username2" style="text-align: center"> User 2 </h2>
+				<p id="comment2"> This place sucks. Better go to another restaurants </p>
+			</div>
+			<div class ="commentbox">
+				<h2 id="username3" style="text-align: center"> User 3 </h2>
+				<p id="comment3"> This place is so beautiful</p>
+			</div>
+
+		</div>
+		<div class= "restaurantbox" style="top:250px">
+				<input id="review" class="info" style ="width:500px;height:50px;" type="text" placeholder="Write a review">
+				<button name="submit" class="btn btn-primary btn-lg info" type="button">Submit</button>
+		</div>
+	</body>
+</html>
