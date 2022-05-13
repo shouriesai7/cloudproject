@@ -1,13 +1,153 @@
-<head>
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
 		<meta charset= "utf-8">
 		<title> Food Crawl </title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<script src="js/amazon-cognito-identity.min.js"></script>
     		<script src="js/aws-sdk.min.js"></script>
-			<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 		<script src="index.js"></script>
+        <script src="profile.js"></script>
 		<style>
+				.profile{
+				color:purple;
+				margin-left:50px;
+				align:left;
+				  position: sticky;
+				  background-color: #D8BFD8; 
+				  width:120px;
+				  position: fixed;
+				  overflow: auto;
+				}
+				ul {
+				 font-family:Helvetica, serif;
+				  list-style-type: none;
+				  font-size:18px;
+					color:purple;
+					align:center
+				  width: 20%;
+				  top: 350px;
+				  position:
+				  background-color: #D8BFD8;
+				  height: 30%; 
+				  position: fixed;
+				  overflow: auto;
+				}
+				li a {
+				  display: block;
+				  color: #000;
+				  padding: 10px 16px;
+				  border-radius:10%;
+					border:5px solid #fff;
+				  background-color:#D8BFD8;
+				  text-decoration: none;
+				}
+
+				/* Change the link color on hover */
+				li a:hover {
+				  background-color: purple;
+				  color: white;
+				}
+				li a:active {
+				  background-color: purple;
+				  color: white;
+				}
+			  .badge-avatar{
+				width:100px;
+				height:100px;
+				border-radius:100%;
+				border:5px solid #fff;
+				box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.2);
+				margin-top:-75px;
+				position:relative;
+			  }
+			  .sec-title-avatar{
+			  left:200px;
+				width:100px;
+				height:50px;
+				border-radius:100%;
+				border:5px solid #fff;
+				box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.2);
+				margin-top:-75px;
+				position:left;
+			  }
+			  .badge-body{
+				margin:35px 10px;
+			  }
+			.badge-btn{
+				width:100%;
+				margin:15px 0;
+				background-color:purple;
+				border:none;
+				color:#fff;
+				border-radius:2px;
+				padding:7px 10px;
+				font-size:1em;
+				cursor:pointer;
+			  }
+			  .badge-btn:hover{
+				background-color:#D8BFD8;
+
+			  }
+			.sec-title {
+				font-size:48px;
+				color:purple;
+				align:center;
+				margin-left:40px;
+				width: 100%;
+				top:20px
+				text-shadow:2px 2px 4px #000000;
+				padding: 0 0em 0 4em;
+			}
+			  .badge-btn:active{
+				background-color:#785580;
+			  }
+			.badges{
+				padding:20px;
+				display:flex;
+
+				justify-content:space-around;
+				align-items:flex-start;
+				flex-wrap:wrap;
+			  }
+			  .badge{
+				width:290px;
+				font-family:Helvetica, serif;
+				background-color:white;
+				margin-bottom:30px;
+				box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.2);
+				border-radius:3px;
+				font-weight:100;
+				overflow:hidden;
+				text-align:center;
+			  }
+			  .badge-header{
+				height:115px;
+				background-color: purple;
+				background-position:left top, center center;
+				background-attachment:scroll, fixed;
+				overflow:hidden;
+			  }
+			  .badge-name{
+				font-size:1.4em;
+				margin-bottom:5px;
+			  }
+			  
+			  .container-width{
+				top-padding: px
+				width:90%;
+				max-width:1150px;
+				margin:0 auto;
+			  }
+			  .logo-container{
+				float:left;
+				width:50%;
+			  }
+			  .menu{
+				float:right;
+				width:50%;
+			  }
 			.logo{
 				margin: 0;
 				width: 200px;
@@ -76,149 +216,81 @@
 			}
 
 		</style>
-</head>
-
-<body class="profile-page">
-    <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg "  color-on-scroll="100"  id="sectionsNav">
-        <div class="container">
-            <div class="navbar-translate">
-                <a class="navbar-brand" href="https://demos.creative-tim.com/material-kit/index.html" target="_blank">Food Crawler </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="dropdown nav-item">
-                      <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
-                          <i class="material-icons">apps</i> Components
-                      </a>
-                      <div class="dropdown-menu dropdown-with-icons">
-                        <a href="../index.html" class="dropdown-item">
-                            <i class="material-icons">home</i>Home
-                        </a>
-                        
-                        <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                            <i class="material-icons">content_paste</i> Documentation
-                        </a>
-                      </div>
-                    </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">
-                  <i class="material-icons">home</i> Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://twitter.com/CreativeTim" target="_blank">
-                  <i class="fa fa-twitter"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.facebook.com/CreativeTim" target="_blank">
-                  <i class="fa fa-facebook-square"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"  href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                  <i class="fa fa-instagram"></i>
-                </a>
-              </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
-    <div class="main main-raised">
-    <div class="profile-content">
-            <div class="container">
-                <div class="row">
-                  <div class="col-md-6 ml-auto mr-auto">
-                     <div class="profile">
-                          <div class="avatar">
-                              <img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
-                          </div>
-                          <div class="name">
-                              <h3 class="title">Christian Louboutin</h3>
-                <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-        <div class="row">
-          <div class="col-md-6 ml-auto mr-auto" >
-                        <div class="profile-tabs">
-                          <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                                  <i class="material-icons">people</i>
-                                  Friends
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                                  <i class="material-icons">avatar</i>
-                                    Restaurants
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                                  <i class="material-icons">route</i>
-                                    Routes
-                                </a>
-                            </li>
-                          </ul>
-                        </div>
-            </div>
-            </div>
-        
-          <div class="tab-content tab-space">
-            <div class="tab-pane active text-center gallery" id="studio">
-          <div class="row">
-            <div class="col-md-3 ml-auto">
-                <img src="https://images.unsplash.com/photo-1524498250077-390f9e378fc0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83079913579babb9d2c94a5941b2e69d&auto=format&fit=crop&w=751&q=80" class="rounded">
-              <img src="https://images.unsplash.com/photo-1528249227670-9ba48616014f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=66b8e7db17b83084f16fdeadfc93b95b&auto=format&fit=crop&w=357&q=80" class="rounded">
-            </div>
-            <div class="col-md-3 mr-auto">
-              <img src="https://images.unsplash.com/photo-1521341057461-6eb5f40b07ab?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72da2f550f8cbd0ec252ad6fb89c96b2&auto=format&fit=crop&w=334&q=80" class="rounded">
-              <img src="https://images.unsplash.com/photo-1506667527953-22eca67dd919?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6326214b7ce18d74dde5e88db4a12dd5&auto=format&fit=crop&w=750&q=80" class="rounded">
-            </div>
-          </div>
-        </div>
-            <div class="tab-pane text-center gallery" id="favorite">
-            <div class="row">
-              <div class="col-md-3 ml-auto">
-                <img src="https://images.unsplash.com/photo-1504346466600-714572c4b726?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6754ded479383b7e3144de310fa88277&auto=format&fit=crop&w=750&q=80" class="rounded">
-                      <img src="https://images.unsplash.com/photo-1494028698538-2cd52a400b17?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83bf0e71786922a80c420c17b664a1f5&auto=format&fit=crop&w=334&q=80" class="rounded">
-              </div>
-              <div class="col-md-3 mr-auto">
-                <img src="https://images.unsplash.com/photo-1505784045224-1247b2b29cf3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec2bdc92a9687b6af5089b335691830e&auto=format&fit=crop&w=750&q=80" class="rounded">            
-                <img src="https://images.unsplash.com/photo-1524498250077-390f9e378fc0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83079913579babb9d2c94a5941b2e69d&auto=format&fit=crop&w=751&q=80" class="rounded">
-              <img src="https://images.unsplash.com/photo-1506667527953-22eca67dd919?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6326214b7ce18d74dde5e88db4a12dd5&auto=format&fit=crop&w=750&q=80" class="rounded">
-                </div>
-            </div>
-          </div>
-          </div>
-
-        
-            </div>
-        </div>
-  </div>
-  
-  <footer class="footer text-center ">
-    </footer>
-  
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-
-
-   
-
-</body>
+	</head>
+	<body>
+	<section>
+		<div class="logo">
+			<img src="images/profile.jpeg">
+		</div>
+		<div class="iconbar" style="left:45%">
+			<a class="material-icons icon"  href="mainpage.html">home</a>
+			<a class="material-icons icon" href="mainpage.html">public</a>				
+			<a class="material-icons icon" href="mainpage.html">route</a>
+		</div>
+		<div  class="iconbar" style="right:50px">	
+			<span id="text">Welcome, test!</span> 
+			<i class="material-icons picon">person</i>
+			<div class="dropdown-content">
+    			<a href="#">Profile</a>
+   			<a href="#">Log out</a>
+      			</div>
+		</div>
+		<section>
+		<div class = "profile">
+		Profile image here
+		</div>
+		<ul>
+		  <li><a href="profile.html" >Profile</a></li>
+		  <li><a href="friends.html">Friends</a></li>
+		  <li><a href="Reviews.html">Reviews</a></li>
+		  <li><a href="savedroutes.html">Saved Routes</a></li>
+		  
+		</ul>
+		<div class = "profile">
+	
+		</div>
+		<div class = "sec-title">
+			<div class= "" > Name</div>
+		</div>
+			<div class="container-width">
+			  <div class="badges">
+			  <div class="sec-title">
+			  <img src = "">
+			  </div>
+				<div class="badge">
+				  <div class="badge-header">
+				  </div>
+				  <img src="" class="badge-avatar"/>
+				  <div class="badge-body">
+					<div class="badge-name">Adam Smith
+					</div>
+					<button type="button" class="badge-btn">Remove</button>
+				  </div>
+				</div>
+				<div class="badge">
+				  <div class="badge-header">
+				  </div>
+				  <img src="" class="badge-avatar"/>
+				  <div class="badge-body">
+					<div class="badge-name">John Black
+					</div>
+					<button type="button" class="badge-btn">Remove</button>	
+				  </div>
+				</div>
+				<div class="badge">
+				  <div class="badge-header">
+				  </div>
+				  <img src="img/team3.jpg" class="badge-avatar"/>
+				  <div class="badge-body">
+					<div class="badge-name">Jessica White
+					</div>
+					<button type="button" class="badge-btn">Remove</button>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</section>
+		
+	</body>
+</html>
+	
