@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<script src="js/amazon-cognito-identity.min.js"></script>
     		<script src="js/aws-sdk.min.js"></script>
-		<script src="index.js"></script>
+		<script src="bundle.js"></script>
 		<style>
 			.logo{
 				margin: 0;
@@ -22,6 +22,15 @@
 				text-shadow:2px 2px 4px #000000;
 				padding: 0 0em 0 4em;
 			}
+			.dynamic_list{
+				position: relative;
+  			bottom: 0;
+  			right: 0;
+				left:450px;
+				top: 200px;
+  			width: 300px;
+  			border: 3px solid #73AD21;
+			}
 			.iconbar{
 				margin: 0;
 				position: absolute;
@@ -29,7 +38,7 @@
 				-ms-transform: translateX(-50%);
 				transform: translateX(-50%);
 				display:inline-block;
-					
+
 			}
 			.profilepic{
 				margin: 0;
@@ -84,11 +93,11 @@
 		</div>
 		<div class="iconbar" style="left:45%">
 			<a class="material-icons icon"  href="mainpage.html">home</a>
-			<a class="material-icons icon" href="mainpage.html">public</a>				
+			<a class="material-icons icon" href="mainpage.html">public</a>
 			<a class="material-icons icon" href="mainpage.html">route</a>
 		</div>
-		<div  class="iconbar" style="right:50px">	
-			<span id="text">Welcome, test!</span> 
+		<div  class="iconbar" style="right:50px">
+			<span id="text">Welcome, test!</span>
 			<i class="material-icons picon">person</i>
 			<div class="dropdown-content">
     			<a href="#">Profile</a>
@@ -99,13 +108,14 @@
 		<input style ="width:500px;height:50px;" type="text" placeholder="Search..">
 		</div>
 		<div class = "search">
-			<select class="box" name="Type" id="type">
-  			<option value="volvo">Restaurants</option>
+			<select class="box" name="Type" id="type" onchange=on_select(this)>
+				<option value="volvo" ></option>
+  			<option value="volvo" id="select_restaurant">Restaurants</option>
   			<option value="saab">Friends</option>
   			<option value="mercedes">Cuisines</option>
   			</select>
 		</div>
-		<button class="btn btn-primary btna" type="button">Search</button>		
-			
+		<button class="btn btn-primary btna" type="button">Search</button>
+
 	</body>
 </html>

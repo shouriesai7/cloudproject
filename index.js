@@ -7,6 +7,59 @@ var poolData = { UserPoolId : userPoolId,
 
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
+window.on_select =function(select){
+if(select.options[select.selectedIndex].id == "select_restaurant")
+{
+  const AWS = require("aws-sdk");
+  AWS.config = new AWS.Config();
+  AWS.config.accessKeyId = "AKIA5JDBPHZNGUXOZVPP";
+  AWS.config.secretAccessKey = "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";
+  AWS.config.update({region: "us-west-2"});
+
+  const lambda = new AWS.Lambda();
+
+  var data ={ 'key': "value" };
+
+  var datapayload = JSON.stringify(data);
+
+  const params = {
+    FunctionName: "from_nodejs",
+    InvocationType: "RequestResponse",
+    Payload: datapayload,
+      LogType: 'None'
+  };
+  var returndata;
+  console.log("yes");
+  lambda.invoke(params, function(error, data) {
+      if (error) {
+          console.log(error);
+      }
+      else {
+          returndata = JSON.parse(data.Payload);
+          var div = document.createElement('div');
+          div.setAttribute("id", "restaurant_list_div");
+          div.setAttribute('class', 'dynamic_list');
+          document.body.appendChild(div);
+          for (let i=0; i < returndata.length; i++) {
+            var newlabel = document.createElement("Label");
+            newlabel.innerHTML = returndata[i]['name'];
+            var br = document.createElement("br");
+            div.appendChild(br);
+            newlabel.setAttribute("id", returndata[i]['name']);
+            div.appendChild(newlabel);
+
+  }
+
+      }
+  });
+}
+else {
+  if (document.contains(document.getElementById("restaurant_list_div"))) {
+            document.getElementById("restaurant_list_div").remove();
+}
+}
+}
+
 function login(){
   console.log("Success go to JS");
   var username = document.getElementById("username").value;
@@ -50,7 +103,7 @@ function register(){
 	else{
 		password = document.getElementById("rpassword").value;
 	}
-	
+
 	var attributeList= [
   	new AmazonCognitoIdentity.CognitoUserAttribute({
     	Name: 'email',
@@ -70,4 +123,3 @@ function register(){
        }
       });
 }
-
