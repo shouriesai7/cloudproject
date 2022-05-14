@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset= "utf-8">
+		<title> Food Crawl </title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="js/amazon-cognito-identity.min.js"></script>
+    		<script src="js/aws-sdk.min.js"></script>
+		<script src="index.js"></script>
+        <script src="profile.js"></script>
+		<style>
+				.profile{
+				color:purple;
+				margin-left:50px;
+				align:left;
+				  position: relative;
+				  background-color: #D8BFD8; 
+				  width:120px;
+				 top:50px;
+				  overflow: auto;
+				}
+				ul {
+				 font-family:Helvetica, serif;
+				  list-style-type: none;
+				  font-size:18px;
+					color:purple;
+					align:center;
+				  top: 350px;
+				  height: 30%; 
+				  position: fixed;
+				  overflow: auto;
+				}
+				li a {
+				  display: block;
+				  color: #000;
+				  padding: 10px 16px;
+				  border-radius:10%;
+					border:5px solid #fff;
+				  background-color:#D8BFD8;
+				  text-decoration: none;
+				}
+
+				/* Change the link color on hover */
+				li a:hover {
+				  background-color: purple;
+				  color: white;
+				}
+				li a:active {
+				  background-color: purple;
+				  color: white;
+				}
+			  .badge-avatar{
+				width:100px;
+				height:100px;
+				border-radius:100%;
+				border:5px solid #fff;
+				box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.2);
+				margin-top:-75px;
+				position:relative;
+			  }
+			  .sec-title-avatar{
+			  left:200px;
+				width:100px;
+				height:50px;
+				border-radius:100%;
+				border:5px solid #fff;
+				box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.2);
+				margin-top:-75px;
+				position:left;
+			  }
+			  .badge-body{
+				margin:35px 10px;
+			  }
+			.badge-btn{
+				width:100%;
+				margin:15px 0;
+				background-color:purple;
+				border:none;
+				color:#fff;
+				border-radius:2px;
+				padding:7px 10px;
+				font-size:1em;
+				cursor:pointer;
+			  }
+			  .badge-btn:hover{
+				background-color:#D8BFD8;
+
+			  }
+			.sec-title {
+				font-size:48px;
+				color:purple;
+				align:center;
+				margin-left:40px;
+				width: 100%;
+				top:20px
+				text-shadow:2px 2px 4px #000000;
+				padding: 0 0em 0 4em;
+			}
+			  .badge-btn:active{
+				background-color:#785580;
+			  }
+			.badges{
+				padding:20px;
+				display:flex;
+
+				justify-content:space-around;
+				align-items:flex-start;
+				flex-wrap:wrap;
+			  }
+			  .badge{
+				width:290px;
+				font-family:Helvetica, serif;
+				background-color:white;
+				margin-bottom:30px;
+				box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.2);
+				border-radius:3px;
+				font-weight:100;
+				overflow:hidden;
+				text-align:center;
+			  }
+			  .badge-header{
+				height:115px;
+				background-color: purple;
+				background-position:left top, center center;
+				background-attachment:scroll, fixed;
+				overflow:hidden;
+			  }
+			  .badge-name{
+				font-size:1.4em;
+				margin-bottom:5px;
+			  }
+			  
+			  .container-width{
+				top-padding: px
+				width:90%;
+				max-width:1150px;
+				margin:0 auto;
+			  }
+			  .logo-container{
+				float:left;
+				width:50%;
+			  }
+			  .menu{
+				float:right;
+				width:50%;
+			  }
+			.logo{
+				margin: 0;
+				position: relative;
+				top: 10px;
+			}
+			.icon {
+				font-size:48px;
+				color:purple;
+				text-shadow:2px 2px 4px #000000;
+				padding: 0 0em 0 4em;
+			}
+			.iconbar{
+				margin: 0;
+				position: absolute;
+				top: 80px;
+				-ms-transform: translateX(-50%);
+				transform: translateX(-50%);
+				display:inline-block;
+					
+			}
+			.profilepic{
+				margin: 0;
+				position:fixed;
+				top 80px;
+				right: 80px;
+						}
+			.picon {
+				font-size:48px;
+				color:purple;
+				text-shadow:2px 2px 4px #000000;
+				vertical-align: middle;
+			}
+			.dropdown-content {
+  			display: none;
+  			position: absolute;
+  			background-color: #f1f1f1;
+  			min-width: 160px;
+  			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  			z-index: 1;
+			}
+			.dropdown-content a {
+  			color: black;
+  			padding: 12px 16px;
+  			text-decoration: none;
+  			display: block;
+			}
+			.dropdown-content a:hover {background-color: #ddd;}
+			.iconbar:hover .dropdown-content {display: block;}
+			.iconbar:hover .picon {color: #dcd0ff;}
+			.search{
+				position: relative;
+				top: 100px;
+				left: 30%;
+				display: inline;
+			}
+			.box{
+				height:50px;
+				width:200px;
+			}
+			.btna{
+				position: relative;
+				top:160px;
+
+			}
+
+		</style>
+	</head>
+	<body>
+	<section>
+		<div class="logo">
+			<img src="images/profile.jpeg" width="200" height="200">
+		</div>
+		<div class="iconbar" style="left:45%">
+			<a class="material-icons icon"  href="mainpage.html">home</a>
+			<a class="material-icons icon" href="mainpage.html">public</a>				
+			<a class="material-icons icon" href="mainpage.html">route</a>
+		</div>
+		<div  class="iconbar" style="right:50px">	
+			<span id="text">Welcome, test!</span> 
+			<i class="material-icons picon">person</i>
+			<div class="dropdown-content">
+    			<a href="#">Profile</a>
+   			<a href="#">Log out</a>
+      			</div>
+		</div>
+		<section>
+		<div class = "profile">
+		Profile image here
+		</div>
+		<ul>
+		  <li><a href="profile.html" >Profile</a></li>
+		  <li><a href="friends.html">Friends</a></li>
+		  <li><a href="Reviews.html">Reviews</a></li>
+		  <li><a href="savedroutes.html">Saved Routes</a></li>
+		  
+		</ul>
+		<div class = "profile">
+	
+		</div>
+		<div class = "sec-title">
+			<div class= "" > Name</div>
+		</div>
+			<div class="container-width">
+			  <div class="badges">
+			  <div class="sec-title">
+			  <img src = "">
+			  </div>
+				<div class="badge">
+				  <div class="badge-header">
+				  </div>
+				  <img src="" class="badge-avatar"/>
+				  <div class="badge-body">
+					<div class="badge-name">Adam Smith
+					</div>
+					<button type="button" class="badge-btn">Remove</button>
+				  </div>
+				</div>
+				<div class="badge">
+				  <div class="badge-header">
+				  </div>
+				  <img src="" class="badge-avatar"/>
+				  <div class="badge-body">
+					<div class="badge-name">John Black
+					</div>
+					<button type="button" class="badge-btn">Remove</button>	
+				  </div>
+				</div>
+				<div class="badge">
+				  <div class="badge-header">
+				  </div>
+				  <img src="img/team3.jpg" class="badge-avatar"/>
+				  <div class="badge-body">
+					<div class="badge-name">Jessica White
+					</div>
+					<button type="button" class="badge-btn">Remove</button>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</section>
+		
+	</body>
+</html>
+	
