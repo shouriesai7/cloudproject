@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<script src="js/amazon-cognito-identity.min.js"></script>
     		<script src="js/aws-sdk.min.js"></script>
-		<script src="index.js"></script>
+		<script src="bundle.js"></script>
 		<style>
 			.logo{
 				margin: 0;
@@ -30,7 +30,7 @@
 				-ms-transform: translateX(-50%);
 				transform: translateX(-50%);
 				display:inline-block;
-					
+
 			}
 			.profilepic{
 				margin: 0;
@@ -65,7 +65,7 @@
 			.restaurantbox{
 				position: relative;
 				top: 100px;
-				left: 5%;	
+				left: 5%;
 			}
 			.btna{
 				position: relative;
@@ -87,7 +87,7 @@
 				border: 1px solid black;
 				margin: 2px;
 				padding: 5px;
-			}			
+			}
 			.restool{
 				position:absolute;
 				right: 120px;
@@ -103,7 +103,7 @@
 			    display: inline-block;
 			}
 
-		
+
 			figcaption {
     				background-color: #222;
 				color: #fff;
@@ -119,21 +119,21 @@
 			    max-width: 300px;
 			    margin: auto;
 			    display: inline-block;
-			
+
 			}
 		</style>
 	</head>
-	<body>
+	<body onload='populate_with_res()'>
 			<div class="logo">
 			<img src="images/profile.jpeg">
 		</div>
 		<div class="iconbar" style="left:45%">
 			<a class="material-icons icon"  href="mainpage.html">home</a>
-			<a class="material-icons icon" href="mainpage.html">public</a>				
+			<a class="material-icons icon" href="mainpage.html">public</a>
 			<a class="material-icons icon" href="mainpage.html">route</a>
 		</div>
-		<div  class="iconbar" style="right:50px">	
-			<span id="text">Welcome, test!</span> 
+		<div  class="iconbar" style="right:50px">
+			<span id="text">Welcome, test!</span>
 			<i class="material-icons picon">person</i>
 			<div class="dropdown-content">
     			<a href="#">Profile</a>
@@ -144,9 +144,9 @@
 				<img  class="resimage" src="images/profile.jpeg"style="width:300px;height:150px;">
 				<div class= "info" style="left: 320px">
 					<h1  id= "res_name" style="font-size:30px"> Restaurant Name </h1>
-					<h2  id= "Address" style="font-size:15px"> Address </h2>		
-					<span id="cuisine" class="box" style="background-color:azure">Cuisine </span> 
-					<span id="cuisine" class="box" style="background-color:lightpink">Cuisine2 </span>
+					<h2  id= "res_Address" style="font-size:15px"> Address </h2>
+					<span id="res_cuisine" class="box" style="background-color:azure">Cuisine </span>
+
 				</div>
 		</div>
 
