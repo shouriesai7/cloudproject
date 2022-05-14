@@ -19,9 +19,12 @@ function initMap(position) {
   document.getElementById("submit").addEventListener("click", () => {
     calculateAndDisplayRoute(directionsService, directionsRenderer,myLatLng);
   });
-  document.getElementById("type").addEventListener("change", () => { 
+  document.getElementById("type").addEventListener("change", () => {
      console.log(document.getElementById("type").value);
      createDestinationBox(document.getElementById("type").value);
+  });
+  document.getElementById("submit2").addEventListener("click", () => {
+    calculateAndDisplayRoute2(directionsService, directionsRenderer);
   });
 
 }
@@ -37,11 +40,22 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer,myLatLng
         stopover: true
       });
   }
+
+  if (waypoints.length == 1) {
+      var waypoints2 = null;
+
+  }
+  else {
+      var waypoints2 = waypoints.slice(0,-1);
+  };
+
+
+
   directionsService
   .route({
     origin: myLatLng,
-    destination:myLatLng,
-    waypoints: waypoints,
+    destination:waypoints[waypoints.length-1].location,
+    waypoints: waypoints2,
     optimizeWaypoints: true,
     travelMode: google.maps.TravelMode[selectedMode],
   })
@@ -50,6 +64,38 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer,myLatLng
   })
   .catch((e) => console.log(e));
 }
+
+
+function calculateAndDisplayRoute2(directionsService, directionsRenderer){
+
+  // hardcoded route
+  let saved_route1 = {
+    origin: 'Washington Square Park, New York',
+    destination: '558 Broadway New York',
+    waypoints: [
+          {
+        location: '117 2nd Ave New York',
+        stopover: true
+      },{
+        location: '340 Lafayette St New York',
+        stopover: true
+    }],
+    optimizeWaypoints: true,
+    travelMode: google.maps.TravelMode['WALKING'],
+  };
+
+
+  directionsService
+  .route(saved_route1)
+  .then((response) => {
+    directionsRenderer.setDirections(response);
+  })
+  .catch((e) => console.log(e));
+
+}
+
+
+
 
 function geoError() {
             alert("Geocoder failed.");
@@ -69,7 +115,7 @@ function createDestinationBox(number){
   		while (newDiv.firstChild) {
     			newDiv.removeChild(newDiv.firstChild);
   		}
-	}		
+	}
 	for (var i=0; i<number; i++){
 		var newDiv =document.getElementById("destination");
 		var input_name = "input"+i;
