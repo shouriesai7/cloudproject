@@ -45,14 +45,16 @@ AWS.config.credentials.get(function(err) {
 });
 
 function opentab(tabname) {
-  var i;
-  var x = document.getElementsByClassName("tabname");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  document.getElementById(username).style.display = "badgename-name";
+  //for (i = 0; i < 4; i++) {
+  //  var name= "tab"+i;	  
+  //  closetab(name);
+  //}
+  document.getElementById(tabname).removeAttribute("style");
 }
 
 var myfunc = function( val){
  document.getElementById(val).style.backgroundColor="purple";
 };
+function closetab(name){
+	document.getElementById(name).style.display = "none";
+}
