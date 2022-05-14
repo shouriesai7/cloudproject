@@ -2,5 +2,25 @@
   "dependencies": {
     "amazon-cognito-identity-js": "^5.2.8",
     "aws-sdk": "^2.1123.0"
-  }
+  },
+  "name": "cloudproject",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  },
+  "scripts": {
+    "build": "browserify index.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shouriesai7/cloudproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shouriesai7/cloudproject/issues"
+  },
+  "homepage": "https://github.com/shouriesai7/cloudproject#readme"
 }

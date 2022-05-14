@@ -5,7 +5,7 @@
 	<title> Food Crawl </title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/amazon-cognito-identity.min.js"></script>
-    	<script src="js/aws-sdk.min.js"></script>	
+    	<script src="js/aws-sdk.min.js"></script>
 	<script src="index.js"></script>
 	<style>
 		h1 {
@@ -21,7 +21,7 @@
 		width: 200px;
 		margin: 100px;
 		display: inline;}
-	
+
 		.horizontal-center {
   		margin: 0;
   		position: absolute;
@@ -82,8 +82,9 @@
 @keyframes animatezoom {
   from {transform: scale(0)}
   to {transform: scale(1)}
+}
 </style>
-	
+
 </head>
 <body background='images/foodcrawl.jpeg'>
 	<div style= "margin-top:350px;">
@@ -95,7 +96,7 @@
 	</div>
 	<!-- The Login Modal -->
 	<div id="id01" class="modal">
-	
+
   <!--Login Modal Content -->
   <form class="modal-content animate">
     <span onclick="document.getElementById('id01').style.display='none'"
@@ -124,7 +125,7 @@
       <p> Please fill in this form to create an account. </p>
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" id="usernamer" required>
-      
+
       <label for="email"><b>Email Address</b></label>
       <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
@@ -132,7 +133,7 @@
       <input type="password" placeholder="Enter Password" name="psw" id="passwordr" required>
        <label for="psw-repeat"><b>Repeat Password</b></label>
       <input type="password" placeholder="Enter Repeat Password" name="psw-repeat" id="rpassword" required>
-       
+
       <p>By creating an account you agree to our <a href="comfirmation.html" style="color:dodgerblue">Terms & Privacy</a>.</p>
       	<div style="text-align:center">
 		<button class="btn btn-primary" type="button" onclick="register();">Register</button>
@@ -153,7 +154,7 @@ window.onclick = function(event) {
     else if (event.target == registermodal){
 	    registermodal.style.display = "none";
 
-	    }	
+	    }
 }
 </script>
 </body>
