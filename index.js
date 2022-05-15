@@ -7,6 +7,15 @@ var poolData = { UserPoolId : userPoolId,
 
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
+window.populate_friend=function(data)
+{
+  data=data.split("/");
+  window.sessionStorage.clear();
+  window.sessionStorage.setItem("friend_name", data[0]);
+  window.sessionStorage.setItem("friend_email", data[1]);
+  window.location.href = "friend.html"
+}
+
 window.populate_res =function(data)
 {
   data=data.split("/");
@@ -38,6 +47,8 @@ window.on_select =function(select){
 if(select.options[select.selectedIndex].id == "select_restaurant")
 {
 
+  if (document.contains(document.getElementById("restaurant_list_div"))) {
+            document.getElementById("restaurant_list_div").remove();}
 
   const AWS = require("aws-sdk");
   AWS.config = new AWS.Config();
@@ -85,10 +96,68 @@ if(select.options[select.selectedIndex].id == "select_restaurant")
       }
   });
 }
+else if(select.options[select.selectedIndex].id == "select_friends")
+{
+  if (document.contains(document.getElementById("restaurant_list_div"))) {
+            document.getElementById("restaurant_list_div").remove(); }
+
+
+            const AWS = require("aws-sdk");
+            AWS.config = new AWS.Config();
+            AWS.config.accessKeyId = "AKIA5JDBPHZNGUXOZVPP";
+            AWS.config.secretAccessKey = "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";
+            AWS.config.update({region: "us-east-1"});
+
+            const lambda = new AWS.Lambda();
+
+            var data ={ 'key': "value" };
+
+            var datapayload = JSON.stringify(data);
+
+            const params = {
+              FunctionName: "get_users",
+              InvocationType: "RequestResponse",
+              Payload: datapayload,
+                LogType: 'None'
+            };
+            var returndata;
+            console.log("yes");
+            lambda.invoke(params, function(error, data) {
+                if (error) {
+                    console.log(error);
+                }
+                else {
+                    returndata = JSON.parse(data.Payload);
+                    console.log(returndata);
+                    user_list=returndata['users'];
+
+                    var div = document.createElement('div');
+                    div.setAttribute("id", "restaurant_list_div");
+                    div.setAttribute('class', 'dynamic_list');
+                    document.body.appendChild(div);
+                    for (let i=0; i < user_list.length; i++) {
+                      console.log(user_list[i]['username']);
+                      var newlabel = document.createElement("a");
+                      newlabel.innerHTML = user_list[i]['username'];
+                      var br = document.createElement("br");
+                      div.appendChild(br);
+                      newlabel.setAttribute("id", user_list[i]['username']);
+                      var string1 = user_list[i]['username']+'/'+user_list[i]['useremail'];
+                      newlabel.setAttribute('onclick', 'populate_friend( " '+string1+' " )');
+                      div.appendChild(newlabel);
+
+           }
+
+                }
+            });
+}
+
+
 else {
   if (document.contains(document.getElementById("restaurant_list_div"))) {
             document.getElementById("restaurant_list_div").remove();
 }
+
 }
 }
 

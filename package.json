@@ -13,7 +13,8 @@
   },
   "scripts": {
     "build_main_index": "browserify index.js -o main_bundle.js",
-    "build_map_index": "browserify ./GoogleMaps/main.js -o ./GoogleMaps/bundle.js"
+    "build_map_index": "browserify ./GoogleMaps/main.js -o ./GoogleMaps/bundle.js",
+    "build_friend_index": "browserify friend.js -o friend_bundle.js"
   },
   "repository": {
     "type": "git",

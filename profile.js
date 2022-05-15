@@ -4,8 +4,14 @@ var clientId ="80q3im5c1lk02g5b1vb38028d";
 var poolData = { UserPoolId : userPoolId,
   ClientId : clientId
 };
-
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+
+window.set_info =function()
+{
+  var div1=document.getElementById("name_div");
+  div1.innerHTML=userPool.getCurrentUser()['username'];
+}
 
 function login(){
   console.log("Success go to JS");
@@ -38,15 +44,15 @@ function login(){
     },
   });
 }
-AWS.config.credentials.get(function(err) {
-  if (!err) {
-    var id = AWS.config.credentials.identityId;
-  }
-});
+//AWS.config.credentials.get(function(err) {
+//  if (!err) {
+  //  var id = AWS.config.credentials.identityId;
+  //}
+//});
 
 function opentab(tabname) {
   //for (i = 0; i < 4; i++) {
-  //  var name= "tab"+i;	  
+  //  var name= "tab"+i;
   //  closetab(name);
   //}
   document.getElementById(tabname).removeAttribute("style");
