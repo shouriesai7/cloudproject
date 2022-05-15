@@ -6,7 +6,7 @@ var poolData = { UserPoolId : userPoolId,
 };
 
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-
+var routes_data;
 function initMap(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
@@ -57,12 +57,13 @@ function initMap(position) {
   };
   var returndata;
   console.log("yes");
-  lambda.invoke(params, function(error, data) {
+   lambda.invoke(params, function(error, data) {
       if (error) {
           console.log(error);
       }
       else {
           returndata = JSON.parse(data.Payload);
+	  routes_data = returndata;
           var select_saved_route=document.getElementById('saved_routes');
           for (let route in returndata['routes']) {
             console.log(returndata['routes'][route])
@@ -75,12 +76,13 @@ function initMap(position) {
           newoption.setAttribute("id", route);
           select_saved_route.appendChild(newoption);
         }
-        document.getElementById("submit2").addEventListener("click", () => {
-          calculateAndDisplayRoute2(directionsService, directionsRenderer,returndata);
-        });
           console.log(returndata);
       }
   });
+
+  document.getElementById("submit2").addEventListener("click", () => {
+          calculateAndDisplayRoute2(directionsService, directionsRenderer,routes_data);
+        });
 
 
 
@@ -130,13 +132,17 @@ window.save_routes =function()
           console.log(error);
       }
       else {
-          returndata = JSON.parse(data.Payload);
+	  returndata = JSON.parse(data.Payload);
           console.log(returndata);
-      }
+	  refresh_saveroutes();
+	  var select_saved_route=document.getElementById('saved_routes');
+	  var option = new Option(route_name,route_name);
+	  console.log(route_name);
+	  select_saved_route.appendChild(option);
+
+                }
   });
-  console.log("I'm here");
-  create_dropdown();
-}
+  }
 
 window.calculateAndDisplayRoute =function(directionsService, directionsRenderer,myLatLng){
   const selectedMode = document.getElementById("mode").value;
@@ -180,7 +186,10 @@ window.create_dropdown= function()
 
   //route_list={'route1':['Kingsbrook Jewish Medical Center 585 Schenectady Ave Brooklyn, NY 11203','Brooklyn Children\'s Museum 145 Brooklyn Ave'],'route2':['Weeksville Heritage Center 158 Buffalo Ave Brooklyn, NY 11213','Brookdale University Hospital Medical Center 1 Brookdale Plaza']}
 
- var username=userPool.getCurrentUser()['username'];
+ 
+}
+function refresh_saveroutes(){
+  var username=userPool.getCurrentUser()['username'];
   const AWS = require("aws-sdk");
   AWS.config = new AWS.Config();
   AWS.config.accessKeyId = "AKIA5JDBPHZNGUXOZVPP";
@@ -199,29 +208,19 @@ window.create_dropdown= function()
     Payload: datapayload,
       LogType: 'None'
   };
-  var returndata;
-  console.log("yes");
+    console.log("yes");
   lambda.invoke(params, function(error, data) {
       if (error) {
           console.log(error);
       }
       else {
-          returndata = JSON.parse(data.Payload);
-          var select_saved_route=document.getElementById('saved_routes');
-          for (let route in returndata['routes']) {
-            console.log(returndata['routes'][route])
-
-
-          var newoption = document.createElement("option");
-          newoption.innerHTML = route;
-          //var br = document.createElement("br");
-          //select_saved_route.appendChild(br);
-          newoption.setAttribute("id", route);
-          select_saved_route.appendChild(newoption);
-        }
+          routes_data = JSON.parse(data.Payload);
+                  
+      	}
+     
+  });
 
 }
-
 function calculateAndDisplayRoute2(directionsService, directionsRenderer,data){
 
 
