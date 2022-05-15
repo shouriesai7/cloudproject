@@ -37,6 +37,8 @@ window.populate_with_res =function()
 window.on_select =function(select){
 if(select.options[select.selectedIndex].id == "select_restaurant")
 {
+
+
   const AWS = require("aws-sdk");
   AWS.config = new AWS.Config();
   AWS.config.accessKeyId = "AKIA5JDBPHZNGUXOZVPP";
@@ -90,7 +92,7 @@ else {
 }
 }
 
-function forgot_password()
+window.forgot_password =function()
 {
   var username = document.getElementById("forgot_password_username").value;
 
@@ -125,7 +127,7 @@ function forgot_password()
 
 }
 
-function login(){
+ window.login =function(){
   console.log("Success go to JS");
   var username = document.getElementById("username").value;
   var authenticationData = {
@@ -156,7 +158,8 @@ function login(){
     },
   });
 }
-function register(){
+
+window.register =function(){
 	console.log("Success go to JS");
 	var username = document.getElementById("usernamer").value;
 	console.log(username);

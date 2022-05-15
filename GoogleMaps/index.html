@@ -2,11 +2,19 @@
 <html>
   <head>
     <title>Travel Modes in Directions</title>
+    <script src="./../js/amazon-cognito-identity.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="main.js"></script>
+    <script src="bundle.js"></script>
   </head>
-  <body>
+  <body onload="create_dropdown()">
+
+    <style>
+        .action_btn {
+        width: 200px;
+        margin: 100px;
+        display: inline;}
+    </style>
 
     <div id="floating-panel">
       <b>Number of Stop</b>
@@ -33,6 +41,7 @@
           <option value="TRANSIT">Transit</option>
       </select>
       <div style="text-align:center">
+        <button type="button" onclick="save_routes()" style="height:20px; width:40px;" id="google_maps_save_routes">Save Route</buttom>
 	      <input type="submit" id="submit" />
       </div>
     </div>
@@ -41,11 +50,7 @@
     <div id="floating-panel2">
       <b>Saved Routes</b>
       <select name="Type" id="saved_routes">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
+
   </select>
 
   <div style="text-align:center">
@@ -56,11 +61,11 @@
 
 
     <div id="map"></div>
-
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqodaUsflhVx-FaI3HFpGGLpq4zU0HlFg&callback=getLocation&libraries=&v=weekly"
       async
     ></script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+
   </body>
 </html>
