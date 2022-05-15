@@ -134,6 +134,8 @@ window.save_routes =function()
           console.log(returndata);
       }
   });
+  console.log("I'm here");
+  create_dropdown();
 }
 
 window.calculateAndDisplayRoute =function(directionsService, directionsRenderer,myLatLng){
@@ -178,6 +180,45 @@ window.create_dropdown= function()
 
   //route_list={'route1':['Kingsbrook Jewish Medical Center 585 Schenectady Ave Brooklyn, NY 11203','Brooklyn Children\'s Museum 145 Brooklyn Ave'],'route2':['Weeksville Heritage Center 158 Buffalo Ave Brooklyn, NY 11213','Brookdale University Hospital Medical Center 1 Brookdale Plaza']}
 
+ var username=userPool.getCurrentUser()['username'];
+  const AWS = require("aws-sdk");
+  AWS.config = new AWS.Config();
+  AWS.config.accessKeyId = "AKIA5JDBPHZNGUXOZVPP";
+  AWS.config.secretAccessKey = "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";
+  AWS.config.update({region: "us-east-1"});
+
+  const lambda = new AWS.Lambda();
+
+  var data ={ 'username': username};
+
+  var datapayload = JSON.stringify(data);
+
+  const params = {
+    FunctionName: "get_saved_routes",
+    InvocationType: "RequestResponse",
+    Payload: datapayload,
+      LogType: 'None'
+  };
+  var returndata;
+  console.log("yes");
+  lambda.invoke(params, function(error, data) {
+      if (error) {
+          console.log(error);
+      }
+      else {
+          returndata = JSON.parse(data.Payload);
+          var select_saved_route=document.getElementById('saved_routes');
+          for (let route in returndata['routes']) {
+            console.log(returndata['routes'][route])
+
+
+          var newoption = document.createElement("option");
+          newoption.innerHTML = route;
+          //var br = document.createElement("br");
+          //select_saved_route.appendChild(br);
+          newoption.setAttribute("id", route);
+          select_saved_route.appendChild(newoption);
+        }
 
 }
 

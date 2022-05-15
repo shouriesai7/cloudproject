@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="bundle.js"></script>
   </head>
-  <body onload="create_dropdown()">
+  <body>
 
     <style>
         .action_btn {
@@ -40,10 +40,13 @@
           <option value="CYCLING">Cycling</option>
           <option value="TRANSIT">Transit</option>
       </select>
-      <div style="text-align:center">
-        <button type="button" onclick="save_routes()" style="height:20px; width:40px;" id="google_maps_save_routes">Save Route</buttom>
-	      <input type="submit" id="submit" />
+      <div style= "incline">
+        <button type="button" onclick="save_routes()" id="google_maps_save_routes">Save Route</button>
+	<input type="submit" id="submit" />
+
       </div>
+      
+	 	
     </div>
 
 
@@ -51,7 +54,7 @@
       <b>Saved Routes</b>
       <select name="Type" id="saved_routes">
 
-  </select>
+      </select>
 
   <div style="text-align:center">
     <input type="submit" id="submit2" />
