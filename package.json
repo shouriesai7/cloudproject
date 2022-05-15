@@ -12,9 +12,10 @@
     "browserify": "^17.0.0"
   },
   "scripts": {
-    "build_main_index": "browserify index.js -o main_bundle.js",
-    "build_map_index": "browserify ./GoogleMaps/main.js -o ./GoogleMaps/bundle.js",
-    "build_friend_index": "browserify friend.js -o friend_bundle.js"
+    "build_main": "browserify index.js -o main_bundle.js",
+    "build_map": "browserify ./GoogleMaps/main.js -o ./GoogleMaps/bundle.js",
+    "build_friend": "browserify friend.js -o friend_bundle.js",
+    "build_profile": "browserify profile.js -o profile_bundle.js"
   },
   "repository": {
     "type": "git",

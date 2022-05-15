@@ -7,8 +7,8 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<script src="js/amazon-cognito-identity.min.js"></script>
     		<script src="js/aws-sdk.min.js"></script>
-		<script src="index.js"></script>
-        <script src="profile.js"></script>
+
+        <script src="profile_bundle.js"></script>
 		<style>
 				.profile{
 				color:purple;
@@ -19,6 +19,15 @@
 				  width:120px;
 				 top:50px;
 				  overflow: auto;
+				}
+				.dynamic_list{
+					position: relative;
+	  			bottom: 0;
+	  			right: 0;
+					left:450px;
+					top: 200px;
+	  			width: 300px;
+	  			border: 3px solid #73AD21;
 				}
 				ul {
 				 font-family:Helvetica, serif;
@@ -247,43 +256,7 @@
 		<div class = "sec-title">
 			<div id="name_div"class= "" > Name</div>
 		</div>
-			<div class="container-width">
-			  <div class="badges"id="friends">
-			  <div class="sec-title">
-			  <img src = "">
-			  </div>
-				<div class="badge" >
-				  <div class="badge-header">
-				  </div>
-				  <img src="" class="badge-avatar"/>
-				  <div class="badge-body">
-					<div class="badge-name">Adam Smith
-					</div>
-					<button type="button" class="badge-btn">Remove</button>
-				  </div>
-				</div>
-				<div class="badge">
-				  <div class="badge-header">
-				  </div>
-				  <img src="" class="badge-avatar"/>
-				  <div class="badge-body">
-					<div class="badge-name">John Black
-					</div>
-					<button type="button" class="badge-btn">Remove</button>
-				  </div>
-				</div>
-				<div class="badge">
-				  <div class="badge-header">
-				  </div>
-				  <img src="img/team3.jpg" class="badge-avatar"/>
-				  <div class="badge-body">
-					<div class="badge-name">Jessica White
-					</div>
-					<button type="button" class="badge-btn">Remove</button>
-				  </div>
-				</div>
-			  </div>
-			</div>
+
 		</section>
 
 	</body>
