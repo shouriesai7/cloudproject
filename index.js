@@ -10,20 +10,20 @@ var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 window.populate_res =function(data)
 {
   data=data.split("/");
-  window.localStorage.clear();
-  window.localStorage.setItem("restaurant_name", data[0]);
-  window.localStorage.setItem("restaurant_rating", data[1]);
-  window.localStorage.setItem("restaurant_Address", data[2]);
-  window.localStorage.setItem("cuisine_type", data[3]);
+  window.sessionStorage.clear();
+  window.sessionStorage.setItem("restaurant_name", data[0]);
+  window.sessionStorage.setItem("restaurant_rating", data[1]);
+  window.sessionStorage.setItem("restaurant_Address", data[2]);
+  window.sessionStorage.setItem("cuisine_type", data[3]);
   window.location.href = "Restaurant.html"
 }
 
 window.populate_with_res =function()
 {
-  var resname = window.localStorage.getItem('restaurant_name');
-  var resrating = window.localStorage.getItem('restaurant_rating');
-  var resaddress = window.localStorage.getItem('restaurant_Address');
-  var rescuisine = window.localStorage.getItem('cuisine_type');
+  var resname = window.sessionStorage.getItem('restaurant_name');
+  var resrating = window.sessionStorage.getItem('restaurant_rating');
+  var resaddress = window.sessionStorage.getItem('restaurant_Address');
+  var rescuisine = window.sessionStorage.getItem('cuisine_type');
   console.log(resname)
   var res_name=document.getElementById("res_name");
   //var res_rating=document.getElementById("restaurant_rating");
