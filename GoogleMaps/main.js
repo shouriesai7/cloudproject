@@ -199,7 +199,7 @@ window.save_routes =function()
 {
   var username=userPool.getCurrentUser()['username'];
   var route_name=prompt("Enter Route Name",'');
-  route_name=route_name.strip();
+  route_name=route_name.trim();
   const selectedMode = document.getElementById("mode").value;
   const selectedStop = document.getElementById("type").value;
   const waypoints = [];
