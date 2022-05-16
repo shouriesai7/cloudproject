@@ -115,7 +115,10 @@ window.populate_published_routes=function()
       window.location.href = "./GoogleMaps/index.html";
 		    });
 		div.appendChild(input);
-		newDiv.appendChild(div);
+    newDiv.appendChild(div);
+
+
+
             }
 
         }
