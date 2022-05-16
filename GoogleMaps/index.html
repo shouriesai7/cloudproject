@@ -4,18 +4,25 @@
     <title>Travel Modes in Directions</title>
     <script src="./../js/amazon-cognito-identity.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="bundle.js"></script>
+    <style>
+	.icon {
+				font-size:48px;
+				color:purple;
+				text-shadow:2px 2px 4px #000000;
+
+	      }
+
+    </style>
   </head>
   <body>
 
-    <style>
-        .action_btn {
-        width: 200px;
-        margin: 100px;
-        display: inline;}
-    </style>
-
+    <div  id="floating-panel0">
+	    	<a class="material-icons icon"  href="../mainpage.html">home</a>
+    </div>
     <div id="floating-panel">
       <b>Number of Stop</b>
 
@@ -58,8 +65,7 @@
 
   <div style="text-align:center">
     <input type="submit" id="submit2" />
-    <button type=button id="route_publish">Publish Route</button>
-
+      <button type=button id="route_publish">Publish Route</button>
   </div>
 
     </div>
