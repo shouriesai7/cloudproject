@@ -84,7 +84,53 @@ function initMap(position) {
           calculateAndDisplayRoute2(directionsService, directionsRenderer,routes_data);
         });
 
+      document.getElementById("route_publish").addEventListener("click", () => {
+                publish_routes(directionsService, directionsRenderer,routes_data);
+              });
+}
 
+
+
+window.publish_routes= function(directionsService, directionsRenderer,data)
+{
+  var select_saved_route=document.getElementById('saved_routes');
+  var selected_option = select_saved_route.options[select_saved_route.selectedIndex].text;
+  console.log(data['routes'][selected_option]);
+  var route_status=prompt("Enter Status",'');
+
+  var username=userPool.getCurrentUser()['username'];
+  const AWS = require("aws-sdk");
+  AWS.config = new AWS.Config();
+  AWS.config.accessKeyId = "AKIA5JDBPHZNGUXOZVPP";
+  AWS.config.secretAccessKey = "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";
+  AWS.config.update({region: "us-east-1"});
+
+  const lambda = new AWS.Lambda();
+
+  var data ={ 'username': username,
+              'route':data['routes'][selected_option],
+              'status':route_status  };
+
+  var datapayload = JSON.stringify(data);
+
+  const params = {
+    FunctionName: "save_publish_route",
+    InvocationType: "RequestResponse",
+    Payload: datapayload,
+      LogType: 'None'
+  };
+  var returndata;
+  console.log("yes");
+   lambda.invoke(params, function(error, data) {
+      if (error) {
+          console.log(error);
+      }
+      else {
+          returndata = JSON.parse(data.Payload);
+	  console.log(returndata);
+
+      }
+  });
 
 
 }
@@ -93,6 +139,7 @@ window.save_routes =function()
 {
   var username=userPool.getCurrentUser()['username'];
   var route_name=prompt("Enter Route Name",'');
+  route_name=route_name.strip();
   const selectedMode = document.getElementById("mode").value;
   const selectedStop = document.getElementById("type").value;
   const waypoints = [];
@@ -186,7 +233,7 @@ window.create_dropdown= function()
 
   //route_list={'route1':['Kingsbrook Jewish Medical Center 585 Schenectady Ave Brooklyn, NY 11203','Brooklyn Children\'s Museum 145 Brooklyn Ave'],'route2':['Weeksville Heritage Center 158 Buffalo Ave Brooklyn, NY 11213','Brookdale University Hospital Medical Center 1 Brookdale Plaza']}
 
- 
+
 }
 function refresh_saveroutes(){
   var username=userPool.getCurrentUser()['username'];
@@ -215,9 +262,9 @@ function refresh_saveroutes(){
       }
       else {
           routes_data = JSON.parse(data.Payload);
-                  
+
       	}
-     
+
   });
 
 }

@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build_main": "browserify index.js -o main_bundle.js",
+    "build_route": "browserify Routes.js -o route_bundle.js",
     "build_map": "browserify ./GoogleMaps/main.js -o ./GoogleMaps/bundle.js",
     "build_friend": "browserify friend.js -o friend_bundle.js",
     "build_profile": "browserify profile.js -o profile_bundle.js"
