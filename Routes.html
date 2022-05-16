@@ -78,8 +78,12 @@
 				display: inline;
 			}
 			.box{
-				height:50px;
-				width:200px;
+				position: relative;
+				top:150px;
+				left:20%;
+				border: 1px solid #999;
+				width:1000px;
+				margin: 10px;
 			}
 			.btna{
 				position: relative;
@@ -94,6 +98,9 @@
 
 
     <body onload="populate_published_routes()">
+		<div class="logo">
+			<img src="images/profile.jpeg">
+		</div>
       <div class="iconbar" style="left:45%">
         <a class="material-icons icon"  href="mainpage.html">home</a>
         <a class="material-icons icon" href="./GoogleMaps/index.html">public</a>
@@ -109,6 +116,9 @@
         			</div>
   		</div>
 
+       	<div id="proutes">
+	
+	</div>
 
       </body>
 

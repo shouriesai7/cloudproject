@@ -7,6 +7,7 @@ var poolData = { UserPoolId : userPoolId,
 
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 var routes_data;
+var published_route_data;
 function initMap(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
@@ -79,6 +80,49 @@ function initMap(position) {
           console.log(returndata);
       }
   });
+
+  var show_published=window.localStorage.getItem("show_published")
+  if(parseInt(show_published))
+  {
+    window.localStorage.setItem("show_published", String(0));
+    var nameroute = window.sessionStorage.getItem('route_name1');
+    const AWS = require("aws-sdk");
+    AWS.config = new AWS.Config();
+    AWS.config.accessKeyId = "AKIA5JDBPHZNGUXOZVPP";
+    AWS.config.secretAccessKey = "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";
+    AWS.config.update({region: "us-east-1"});
+
+    const lambda = new AWS.Lambda();
+
+    var data ={ 'routename': nameroute };
+
+    var datapayload = JSON.stringify(data);
+
+    const params = {
+      FunctionName: "query_published_route",
+      InvocationType: "RequestResponse",
+      Payload: datapayload,
+        LogType: 'None'
+    };
+    var returndata;
+    console.log("yes");
+
+    lambda.invoke(params, function(error, data) {
+        if (error) {
+            console.log(error);
+        }
+        else {
+            returndata = JSON.parse(data.Payload);
+            console.log(returndata);
+            published_route_data=returndata;
+            calculateAndDisplayRoute3(directionsService, directionsRenderer,published_route_data['routelist']);
+        }
+    });
+
+
+
+  }
+
 
   document.getElementById("submit2").addEventListener("click", () => {
           calculateAndDisplayRoute2(directionsService, directionsRenderer,routes_data);
@@ -291,6 +335,46 @@ function calculateAndDisplayRoute2(directionsService, directionsRenderer,data){
     {
       var dict = {};
       dict["location"]=data['routes'][selected_option][i];
+      dict["stopover"]=true;
+      waypoint_list.push(dict);
+    }
+    saved_route1['waypoints']=waypoint_list;
+  }
+
+
+
+  directionsService
+  .route(saved_route1)
+  .then((response) => {
+    directionsRenderer.setDirections(response);
+  })
+  .catch((e) => console.log(e));
+
+}
+}
+
+function calculateAndDisplayRoute3(directionsService, directionsRenderer,data){
+
+
+  // hardcoded route
+  console.log(data)
+
+
+
+  if(data.length>1){
+  let saved_route1 = {
+    origin: data[0],
+    destination: data[data.length-1],
+    optimizeWaypoints: true,
+    travelMode: google.maps.TravelMode['WALKING'],
+  };
+  if(data.length>2)
+  {
+    var waypoint_list=[];
+    for (let i = 1; i < data.length-1; i++)
+    {
+      var dict = {};
+      dict["location"]=data[i];
       dict["stopover"]=true;
       waypoint_list.push(dict);
     }
