@@ -109,6 +109,7 @@ window.publish_routes= function(directionsService, directionsRenderer,data)
 
   var data ={ 'username': username,
               'route':data['routes'][selected_option],
+              'routename':selected_option,
               'status':route_status  };
 
   var datapayload = JSON.stringify(data);
