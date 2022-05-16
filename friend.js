@@ -185,7 +185,7 @@ window.add_or_remove_friend=function()
   //}
 //});
 
-function opentab(tabname) {
+window.opentab=function(tabname) {
   //for (i = 0; i < 4; i++) {
   //  var name= "tab"+i;
   //  closetab(name);
@@ -196,6 +196,6 @@ function opentab(tabname) {
 var myfunc = function( val){
  document.getElementById(val).style.backgroundColor="purple";
 };
-function closetab(name){
+window.closetab=function(name){
 	document.getElementById(name).style.display = "none";
 }

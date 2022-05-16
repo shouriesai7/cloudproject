@@ -14,7 +14,7 @@ window.set_info =function()
 
   if(document.getElementById('restaurant_list_div'))
   {
-    document.getElementById('restaurant_list_div').clear();
+    document.getElementById('restaurant_list_div').remove();
   }
 
   const AWS = require("aws-sdk");
@@ -110,7 +110,7 @@ window.set_info =function()
                           {
                             newlabel3.remove();
                             newlabel2.remove();
-                            newlabel1.remove();
+                            newlabel.remove();
                           }
 
 
@@ -223,7 +223,7 @@ window.opentab=function(tabname) {
           console.log(returndata);
           if(document.getElementById('restaurant_list_div'))
           {
-            document.getElementById('restaurant_list_div').clear();
+            document.getElementById('restaurant_list_div').remove();
           }
           if(returndata['final_status']=="friends")
           {
@@ -313,6 +313,11 @@ window.opentab=function(tabname) {
 var myfunc = function( val){
  document.getElementById(val).style.backgroundColor="purple";
 };
-function closetab(name){
-	document.getElementById(name).style.display = "none";
+window.closetab=function(name){
+
+  if(document.getElementById("restaurant_list_div"))
+  {
+    document.getElementById("restaurant_list_div").remove();
+  }
+	//document.getElementById(name).style.display = "none";
 }
