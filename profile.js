@@ -108,6 +108,7 @@ window.set_info =function()
 
                           if(status=="request_accepted")
                           {
+
                             newlabel3.remove();
                             newlabel2.remove();
                             newlabel.remove();
@@ -242,6 +243,8 @@ window.opentab=function(tabname) {
               newlabel2.setAttribute("id", returndata['requests'][i]+"remove");
               div.appendChild(newlabel3);
               div.appendChild(newlabel2);
+              var br = document.createElement("br");
+              div.appendChild(br);
               var user2=returndata['requests'][i];
               console.log(returndata['requests'][i]);
               console.log("aaaaaaaa");

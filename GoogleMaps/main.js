@@ -81,6 +81,21 @@ function initMap(position) {
       }
   });
 
+
+  var recom_res_check=window.localStorage.getItem("recom_res")
+  if(parseInt(recom_res_check))
+  {
+    window.localStorage.setItem("recom_res", String(0));
+    res1=window.sessionStorage.getItem("recom_res1");
+    res2=window.sessionStorage.getItem("recom_res2");
+    res3=window.sessionStorage.getItem("recom_res3");
+    res=[res1,res2,res3]
+    window.sessionStorage.clear();
+    calculateAndDisplayRoute4(directionsService, directionsRenderer,res,myLatLng);
+
+  }
+
+
   var show_published=window.localStorage.getItem("show_published")
   if(parseInt(show_published))
   {
@@ -326,7 +341,7 @@ function calculateAndDisplayRoute2(directionsService, directionsRenderer,data){
     origin: data['routes'][selected_option][0],
     destination: data['routes'][selected_option][data['routes'][selected_option].length-1],
     optimizeWaypoints: true,
-    travelMode: google.maps.TravelMode['WALKING'],
+    travelMode: google.maps.TravelMode['BICYCLING'],
   };
   if(data['routes'][selected_option].length>2)
   {
@@ -356,7 +371,7 @@ function calculateAndDisplayRoute2(directionsService, directionsRenderer,data){
 function calculateAndDisplayRoute3(directionsService, directionsRenderer,data){
 
 
-  // hardcoded route
+
   console.log(data)
 
 
@@ -366,7 +381,7 @@ function calculateAndDisplayRoute3(directionsService, directionsRenderer,data){
     origin: data[0],
     destination: data[data.length-1],
     optimizeWaypoints: true,
-    travelMode: google.maps.TravelMode['WALKING'],
+    travelMode: google.maps.TravelMode['BICYCLING'],
   };
   if(data.length>2)
   {
@@ -391,6 +406,46 @@ function calculateAndDisplayRoute3(directionsService, directionsRenderer,data){
   .catch((e) => console.log(e));
 
 }
+}
+
+
+function calculateAndDisplayRoute4(directionsService, directionsRenderer,res,myLatLng){
+
+
+
+
+
+console.log("ababbadssdsd")
+
+
+  let saved_route1 = {
+    origin: myLatLng,
+    destination: res[2],
+    optimizeWaypoints: true,
+    travelMode: google.maps.TravelMode['BICYCLING'],
+  };
+
+    var waypoint_list=[];
+    for (let i = 1; i < 3; i++)
+    {
+      var dict = {};
+      dict["location"]=res[i-1];
+      dict["stopover"]=true;
+      waypoint_list.push(dict);
+    }
+    saved_route1['waypoints']=waypoint_list;
+
+
+
+
+  directionsService
+  .route(saved_route1)
+  .then((response) => {
+    directionsRenderer.setDirections(response);
+  })
+  .catch((e) => console.log(e));
+
+
 }
 
 

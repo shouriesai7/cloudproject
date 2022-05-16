@@ -7,6 +7,20 @@ var poolData = { UserPoolId : userPoolId,
 
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
+
+
+ window.recom_res=function(data)
+ {
+   data=data.split("*");
+   window.sessionStorage.clear();
+   window.sessionStorage.setItem("recom_res1", data[0]);
+   window.sessionStorage.setItem("recom_res2", data[1]);
+   window.sessionStorage.setItem("recom_res3", data[2]);
+   window.localStorage.setItem("recom_res", String(1));
+   window.location.href = "./GoogleMaps/index.html";
+
+ }
+
 window.populate_friend=function(data)
 {
   data=data.split("/");
@@ -153,10 +167,93 @@ else if(select.options[select.selectedIndex].id == "select_friends")
 }
 
 
+else if(select.options[select.selectedIndex].id == "select_crawl"){
+
+  if (document.contains(document.getElementById("restaurant_list_div"))) {
+            document.getElementById("restaurant_list_div").remove();}
+
+
+            const AWS = require("aws-sdk");
+            AWS.config = new AWS.Config();
+            AWS.config.accessKeyId = "AKIA5JDBPHZNGUXOZVPP";
+            AWS.config.secretAccessKey = "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";
+            AWS.config.update({region: "us-east-1"});
+
+            const lambda = new AWS.Lambda();
+
+            var data ={ 'username':userPool.getCurrentUser()['username']};
+
+            var datapayload = JSON.stringify(data);
+
+            const params = {
+              FunctionName: "restaurant_recommender",
+              InvocationType: "RequestResponse",
+              Payload: datapayload,
+                LogType: 'None'
+            };
+            var returndata;
+            console.log("yes");
+            lambda.invoke(params, function(error, data) {
+                if (error) {
+                    console.log(error);
+                }
+                else {
+                    returndata = JSON.parse(data.Payload);
+                    console.log(returndata);
+                    var res1=returndata['results1'];
+                    var res2=returndata['results2'];
+                    var res3=returndata['results3'];
+                    var div = document.createElement('div');
+                    div.setAttribute("id", "restaurant_list_div");
+                    div.setAttribute('class', 'dynamic_list');
+                    document.body.appendChild(div);
+
+                      var newlabel1 = document.createElement("a");
+                      newlabel1.innerHTML = res1[0][0]+","+res1[1][0]+","+res1[2][0];
+                      var br1 = document.createElement("br");
+                      div.appendChild(br1);
+                      newlabel1.setAttribute("id", "one");
+                      var string1 = res1[0][1]+'*'+res1[1][1]+'*'+res1[2][1];
+                      newlabel1.setAttribute('onclick', 'recom_res( " '+string1+' " )');
+                      div.appendChild(newlabel1);
+
+
+                      var newlabel2 = document.createElement("a");
+                      newlabel2.innerHTML = res2[0][0]+","+res2[1][0]+","+res2[2][0];
+                      var br2 = document.createElement("br");
+                      div.appendChild(br2);
+                      newlabel2.setAttribute("id", "two");
+                      var string2 = res2[0][1]+'*'+res2[1][1]+'*'+res2[2][1];
+                      newlabel2.setAttribute('onclick', 'recom_res( " '+string2+' " )');
+                      div.appendChild(newlabel2);
+
+                      var newlabel3 = document.createElement("a");
+                      newlabel3.innerHTML = res3[0][0]+","+res3[1][0]+","+res3[2][0];
+                      var br3 = document.createElement("br");
+                      div.appendChild(br3);
+                      newlabel3.setAttribute("id", "three");
+                      var string3 = res3[0][1]+'*'+res3[1][1]+'*'+res3[2][1];
+                      newlabel3.setAttribute('onclick', 'recom_res( " '+string3+' " )');
+                      div.appendChild(newlabel3);
+
+
+
+
+
+
+
+
+
+                }
+            });
+
+
+
+
+}
 else {
   if (document.contains(document.getElementById("restaurant_list_div"))) {
-            document.getElementById("restaurant_list_div").remove();
-}
+            document.getElementById("restaurant_list_div").remove();}
 
 }
 }

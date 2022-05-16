@@ -112,7 +112,7 @@ window.populate_published_routes=function()
 		    input.addEventListener("click",() => {
 			window.localStorage.setItem("show_published", String(1));
       window.sessionStorage.setItem('route_name1',publish_routes[i]['route_name']);
-      window.location.href = "./GoogleMaps/index.html"
+      window.location.href = "./GoogleMaps/index.html";
 		    });
 		div.appendChild(input);
 		newDiv.appendChild(div);
