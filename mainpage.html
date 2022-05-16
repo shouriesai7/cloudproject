@@ -105,17 +105,17 @@
       			</div>
 		</div>
 		<div class="search">
-		<input style ="width:500px;height:50px;" type="text" placeholder="Search..">
+		<input style ="width:500px;height:50px;" type="text" id ="searchtxt" placeholder="Search..">
 		</div>
 		<div class = "search">
 			<select class="box" name="Type" id="type" onchange=on_select(this)>
 				<option value="volvo" ></option>
-  			<option value="volvo" id="select_restaurant">Restaurants</option>
-  			<option value="saab" id="select_friends">Friends</option>
+  			<option value="restaurant" id="select_restaurant">Restaurants</option>
+  			<option value="friend" id="select_friends">Friends</option>
   			<option value="mercedes" id="select_crawl">Suggested Food Crawl</option>
   			</select>
 		</div>
-		<button class="btn btn-primary btna" type="button">Search</button>
+		<button class="btn btn-primary btna" type="button" onclick="search()">Search</button>
 
 	</body>
 </html>
